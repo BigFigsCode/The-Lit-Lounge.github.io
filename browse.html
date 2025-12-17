@@ -1,131 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Browse Books - The Lit Lounge</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Browse Books - The Lit Lounge</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <header>
-        <nav>
-            <h1 style="font-size: 100px;">The Lit Lounge</h1>
-            <ul>
-                <li style="font-size: 34px;"><a href="index.html">Home</a></li>
-                <li style="font-size: 34px;"><a href="browse.html">Browse</a></li>
-                <li style="font-size: 34px;"><a href="about.html">About</a></li>
-                <li style="font-size: 34px;"><a href="cart.html">Cart</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Browse Section -->
-    <section class="browse-section">
-        <h2 style="font-size: 62px; text-align: center;">Browse All Books</h2>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">The Lit Lounge</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="browse.html" aria-current="page">Browse</a>
+        <a href="about.html">About</a>
+        <a href="cart.html">Cart</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-        <table style="width: 80%; margin: 0 auto; font-size: 24px; border-collapse: collapse;">
-            <thead>
-                <tr style="background-color: #f2f2f2;">
-                    <th>Cover</th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Price</th>
-                    <th>Details</th>
-					<th>Buy</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><img src="images/book1.png" alt="Whispers of the Emberlight" width="100"></td>
-                    <td>Whispers of the Emberlight</td>
-                    <td>Mira Thorne</td>
-                    <td>$14.99</td>
-                    <!--<td><button style="font-size: 20px;">View</button></td>-->
-					<td><button style="font-size: 20px;" onclick="openModal('emberlight')">View</button></td>
-					<td><button style="font-size: 20px;" onclick="addToCart('Whispers of the Emberlight', 14.99)">Add to Cart</button></td>
-                </tr>
-                <tr>
-                    <td><img src="images/book2.png" alt="Beneath a Hollow Sky" width="100"></td>
-                    <td>Beneath a Hollow Sky</td>
-                    <td>Elias Varrin</td>
-                    <td>$12.49</td>
-                    <!--<td><button style="font-size: 20px;">View</button></td>-->
-					<td><button style="font-size: 20px;" onclick="openModal('hollowsky')">View</button></td>
-					<td><button style="font-size: 20px;" onclick="addToCart('Beneath a Hollow Sky', 14.99)">Add to Cart</button></td>
+  <main class="container">
+    <section class="section">
+      <div class="section-head">
+        <h1 class="page-title">Browse All Books</h1>
+        <p class="muted">Search, sort, and view details before adding to cart.</p>
+      </div>
 
-                </tr>
-                <tr>
-                    <td><img src="images/book3.png" alt="The Clockmaker's Silence" width="100"></td>
-                    <td>The Clockmaker's Silence</td>
-                    <td>Renata Vale</td>
-                    <td>$16.25</td>
-                    <!--<td><button style="font-size: 20px;">View</button></td>-->
-					<td><button style="font-size: 20px;" onclick="openModal('clockmaker')">View</button></td>	
-					<td><button style="font-size: 20px;" onclick="addToCart(&quot;The Clockmaker's Silence&quot;, 14.99)">Add to Cart</button></td>
-                </tr>
-            </tbody>
-        </table>
+      <!-- Controls -->
+      <div class="controls">
+        <label class="control">
+          <span class="control-label">Search</span>
+          <input id="searchInput" type="search" placeholder="Search title or author..." />
+        </label>
+
+        <label class="control">
+          <span class="control-label">Sort</span>
+          <select id="sortSelect">
+            <option value="featured">Featured</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+            <option value="title-asc">Title: A → Z</option>
+            <option value="title-desc">Title: Z → A</option>
+          </select>
+        </label>
+      </div>
+
+      <!-- Book Grid (rendered by JS) -->
+      <div id="bookGrid" class="book-grid"></div>
     </section>
+  </main>
 
-    <footer>
-        <p style="text-align: center;">&copy; 2025 The Lit Lounge. All rights reserved.</p>
-    </footer>
-	<!-- Modal Structure -->
-<div id="bookModal" class="modal" style="display:none;">
-  <div class="modal-content" style="background: white; padding: 20px; max-width: 600px; margin: 100px auto; border: 2px solid #333;">
-    <h2 id="modalTitle"></h2>
-    <p id="modalDescription"></p>
-    <button onclick="closeModal()">OK</button>
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 The Lit Lounge. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div id="bookModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-head">
+        <h2 id="modalTitle"></h2>
+        <button class="icon-btn" onclick="closeModal()" aria-label="Close">✕</button>
+      </div>
+      <p id="modalDescription" class="muted"></p>
+      <div class="modal-actions">
+        <button class="btn" onclick="closeModal()">Close</button>
+      </div>
+    </div>
   </div>
-</div>
-<script>
-  // Mock data (this will later come from MongoDB)
-  const bookDetails = {
-    "emberlight": {
-      title: "Whispers of the Emberlight",
-      description: "A fantasy tale of rebellion and magic buried beneath the ashes of war."
-    },
-    "hollowsky": {
-      title: "Beneath a Hollow Sky",
-      description: "In a world without stars, a cartographer unearths a signal that could reshape time itself."
-    },
-    "clockmaker": {
-      title: "The Clockmaker's Silence",
-      description: "A journalist follows a trail of clues left by a mysterious clockmaker in 1890s Prague."
+
+  <script>
+    // Single source of truth for your catalog (easy to expand later)
+    const books = [
+      {
+        key: "emberlight",
+        title: "Whispers of the Emberlight",
+        author: "Mira Thorne",
+        price: 14.99,
+        img: "images/book1.png",
+        description: "A fantasy tale of rebellion and magic buried beneath the ashes of war."
+      },
+      {
+        key: "hollowsky",
+        title: "Beneath a Hollow Sky",
+        author: "Elias Varrin",
+        price: 12.49,
+        img: "images/book2.png",
+        description: "In a world without stars, a cartographer unearths a signal that could reshape time itself."
+      },
+      {
+        key: "clockmaker",
+        title: "The Clockmaker's Silence",
+        author: "Renata Vale",
+        price: 16.25,
+        img: "images/book3.png",
+        description: "A journalist follows a trail of clues left by a mysterious clockmaker in 1890s Prague."
+      }
+    ];
+
+    const grid = document.getElementById("bookGrid");
+    const searchInput = document.getElementById("searchInput");
+    const sortSelect = document.getElementById("sortSelect");
+
+    function money(n){ return `$${n.toFixed(2)}`; }
+
+    function render(list){
+      grid.innerHTML = list.map(b => `
+        <article class="book-card">
+          <img src="${b.img}" alt="${b.title} cover" />
+          <h3>${b.title}</h3>
+          <p class="muted">${b.author}</p>
+
+          <div class="book-bottom">
+            <span class="price">${money(b.price)}</span>
+            <div class="card-actions">
+              <button class="btn small ghost" onclick="openModal('${b.key}')">View</button>
+              <button class="btn small" onclick="addToCart('${escapeQuotes(b.title)}', ${b.price})">Add</button>
+            </div>
+          </div>
+        </article>
+      `).join("");
     }
-  };
 
-  function openModal(bookKey) {
-    const data = bookDetails[bookKey];
-    document.getElementById('modalTitle').textContent = data.title;
-    document.getElementById('modalDescription').textContent = data.description;
-    document.getElementById('bookModal').style.display = 'block';
-  }
-
-  function closeModal() {
-    document.getElementById('bookModal').style.display = 'none';
-  }
-  
-</script>
-
-<script>
-  function addToCart(title, price) {
-    const item = { title, price, qty: 1 };
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-    // Check if item already exists
-    const existing = cart.find(book => book.title === title);
-    if (existing) {
-      existing.qty += 1;
-    } else {
-      cart.push(item);
+    function escapeQuotes(str){
+      // helps keep onclick safe for single quotes
+      return String(str).replaceAll("'", "\\'");
     }
 
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${title} added to cart.`);
-  }
-</script>
+    function applyFilters(){
+      const q = searchInput.value.trim().toLowerCase();
+      let filtered = books.filter(b =>
+        b.title.toLowerCase().includes(q) || b.author.toLowerCase().includes(q)
+      );
 
+      const sort = sortSelect.value;
+      if (sort === "price-asc") filtered.sort((a,b)=>a.price-b.price);
+      if (sort === "price-desc") filtered.sort((a,b)=>b.price-a.price);
+      if (sort === "title-asc") filtered.sort((a,b)=>a.title.localeCompare(b.title));
+      if (sort === "title-desc") filtered.sort((a,b)=>b.title.localeCompare(a.title));
+
+      render(filtered);
+    }
+
+    // Modal
+    function openModal(bookKey){
+      const b = books.find(x => x.key === bookKey);
+      document.getElementById("modalTitle").textContent = b.title;
+      document.getElementById("modalDescription").textContent = b.description;
+      const m = document.getElementById("bookModal");
+      m.style.display = "block";
+      m.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal(){
+      const m = document.getElementById("bookModal");
+      m.style.display = "none";
+      m.setAttribute("aria-hidden", "true");
+    }
+
+    // Cart
+    function addToCart(title, price){
+      const item = { title, price, qty: 1 };
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      const existing = cart.find(book => book.title === title);
+      if (existing) existing.qty += 1;
+      else cart.push(item);
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`${title} added to cart.`);
+    }
+
+    // Events
+    searchInput.addEventListener("input", applyFilters);
+    sortSelect.addEventListener("change", applyFilters);
+
+    // Initial render
+    render(books);
+
+    // Close modal if clicking the backdrop
+    document.getElementById("bookModal").addEventListener("click", (e) => {
+      if (e.target.id === "bookModal") closeModal();
+    });
+  </script>
 </body>
 </html>
-
