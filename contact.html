@@ -1,71 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Contact Us - The Lit Lounge</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - The Lit Lounge</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <header>
-        <nav>
-            <h1 style="font-size: 100px;">The Lit Lounge</h1>
-            <ul>
-                <li style="font-size: 34px;"><a href="index.html">Home</a></li>
-                <li style="font-size: 34px;"><a href="browse.html">Browse</a></li>
-                <li style="font-size: 34px;"><a href="about.html">About</a></li>
-                <li style="font-size: 34px;"><a href="cart.html">Cart</a></li>
-                <li style="font-size: 34px;"><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Contact Section -->
-    <section style="padding: 40px; max-width: 800px; margin: 0 auto;">
-        <h2 style="font-size: 62px;">Contact Us</h2>
-        <p style="font-size: 24px;">Have a question, suggestion, or just want to say hello? Use the forms below to reach out or sign up for our newsletter.</p>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">The Lit Lounge</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="browse.html">Browse</a>
+        <a href="about.html">About</a>
+        <a href="cart.html">Cart</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-        <!-- Contact Form (POST) -->
-        <form method="POST" action="#" style="margin-top: 40px;">
-            <label for="name" style="font-size: 22px;">Name:</label><br>
-            <input type="text" id="name" name="name" required><br><br>
+  <main class="container">
+    <section class="section">
+      <div class="section-head">
+        <h1 class="page-title">Contact</h1>
+        <p class="muted">Questions, feedback, or newsletter signup—send it here.</p>
+      </div>
 
-            <label for="email" style="font-size: 22px;">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
+      <div class="form-grid">
+        <!-- Contact Form -->
+        <div class="content-card">
+          <h2 class="card-title">Send a Message</h2>
 
-            <label for="message" style="font-size: 22px;">Message:</label><br>
-            <textarea id="message" name="message" maxlength="256" rows="5" cols="50" required></textarea><br><br>
+          <form class="form" method="POST" action="#">
+            <label class="field">
+              <span class="label">Name</span>
+              <input type="text" name="name" required />
+            </label>
 
-            <button type="submit" style="font-size: 20px;">Submit</button>
-            <button type="reset" style="font-size: 20px;">Reset</button>
-        </form>
+            <label class="field">
+              <span class="label">Email</span>
+              <input type="email" name="email" required />
+            </label>
 
-        <!-- Newsletter Form (GET) -->
-        <form method="GET" action="#" style="margin-top: 60px;">
-            <fieldset>
-                <legend style="font-size: 24px;">Newsletter Signup</legend>
+            <label class="field">
+              <span class="label">Message</span>
+              <textarea name="message" maxlength="256" rows="6" required></textarea>
+              <span class="muted tiny">Max 256 characters</span>
+            </label>
 
-                <label for="age" style="font-size: 22px;">Age:</label>
-                <input type="number" id="age" name="age" min="13" max="120" required><br><br>
+            <div class="form-actions">
+              <button type="submit" class="btn primary">Submit</button>
+              <button type="reset" class="btn ghost">Reset</button>
+            </div>
+          </form>
+        </div>
 
-                <p style="font-size: 22px;">Favorite Genres:</p>
-                <input type="checkbox" name="genre" value="sci-fi"> Sci-Fi<br>
-                <input type="checkbox" name="genre" value="mystery"> Mystery<br>
-                <input type="checkbox" name="genre" value="romance"> Romance<br><br>
+        <!-- Newsletter Form -->
+        <div class="content-card">
+          <h2 class="card-title">Newsletter Signup</h2>
 
-                <p style="font-size: 22px;">Preferred Format:</p>
-                <input type="radio" name="format" value="ebook" required> eBook<br>
-                <input type="radio" name="format" value="audiobook"> Audiobook<br>
-                <input type="radio" name="format" value="paperback"> Paperback<br><br>
+          <form class="form" method="GET" action="#">
+            <label class="field">
+              <span class="label">Age</span>
+              <input type="number" name="age" min="13" max="120" required />
+            </label>
 
-                <button type="submit" style="font-size: 20px;">Join Mailing List</button>
+            <fieldset class="fieldset">
+              <legend class="label">Favorite Genres</legend>
+              <label class="check"><input type="checkbox" name="genre" value="sci-fi"> <span>Sci-Fi</span></label>
+              <label class="check"><input type="checkbox" name="genre" value="mystery"> <span>Mystery</span></label>
+              <label class="check"><input type="checkbox" name="genre" value="romance"> <span>Romance</span></label>
             </fieldset>
-        </form>
-    </section>
 
-    <footer>
-        <p style="text-align: center;">&copy; 2025 The Lit Lounge. All rights reserved.</p>
-    </footer>
+            <fieldset class="fieldset">
+              <legend class="label">Preferred Format</legend>
+              <label class="check"><input type="radio" name="format" value="ebook" required> <span>eBook</span></label>
+              <label class="check"><input type="radio" name="format" value="audiobook"> <span>Audiobook</span></label>
+              <label class="check"><input type="radio" name="format" value="paperback"> <span>Paperback</span></label>
+            </fieldset>
+
+            <div class="form-actions">
+              <button type="submit" class="btn primary">Join Mailing List</button>
+            </div>
+          </form>
+
+          <p class="muted tiny" style="margin-top: 10px;">
+            Demo forms only (no backend submission enabled).
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 The Lit Lounge. All rights reserved.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
-
