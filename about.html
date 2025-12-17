@@ -1,44 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>About Us - The Lit Lounge</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About - The Lit Lounge</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <header>
-        <nav>
-            <h1 style="font-size: 100px;">The Lit Lounge</h1>
-            <ul>
-                <li style="font-size: 34px;"><a href="index.html">Home</a></li>
-                <li style="font-size: 34px;"><a href="browse.html">Browse</a></li>
-                <li style="font-size: 34px;"><a href="about.html">About</a></li>
-                <li style="font-size: 34px;"><a href="cart.html">Cart</a></li>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">The Lit Lounge</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="browse.html">Browse</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="cart.html">Cart</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="section">
+      <div class="section-head">
+        <h1 class="page-title">About The Lit Lounge</h1>
+        <p class="muted">A student-built bookstore project designed to feel like a real shopping experience.</p>
+      </div>
+
+      <div class="content-card">
+        <h2 class="card-title">Project Overview</h2>
+        <p class="body-text">
+          The Lit Lounge is an online bookstore created for the CSC441 Web Application Development course.
+          The goal was to build a multi-page web experience where users can browse books, view details,
+          and manage a shopping cart.
+        </p>
+
+        <div class="split">
+          <div>
+            <h3 class="card-subtitle">What it demonstrates</h3>
+            <ul class="bullet">
+              <li>Responsive layout and consistent UI across pages</li>
+              <li>JavaScript interactivity (modals, search/sort)</li>
+              <li>Persistent cart state using localStorage</li>
+              <li>Form inputs and basic validation patterns</li>
             </ul>
-        </nav>
-    </header>
+          </div>
 
-    <!-- About Section -->
-    <section style="padding: 40px; max-width: 900px; margin: 0 auto;">
-        <h2 style="font-size: 62px;">About Us</h2>
-        <p style="font-size: 24px;">The Lit Lounge is a student-built online bookstore created for the CSC441 Web Application Development course. Our mission is to design an interactive, full-stack web application that allows users to browse and learn more about fiction books across various genres.</p>
+          <div>
+            <h3 class="card-subtitle">Tech used</h3>
+            <ul class="bullet">
+              <li>HTML5</li>
+              <li>CSS (Flexbox/Grid, responsive design)</li>
+              <li>JavaScript</li>
+              <li>Planned: Node.js + database integration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-        <h3 style="font-size: 40px; margin-top: 40px;">Project Overview</h3>
-        <p style="font-size: 22px;">This site was developed to demonstrate our understanding of front-end and back-end technologies including HTML5, CSS, JavaScript, Node.js, MySQL, and MongoDB. The project features multiple pages, database-driven content, JavaScript interactivity, and form validation.</p>
-
-        <h3 style="font-size: 40px; margin-top: 40px;">Meet the Team</h3>
-        <ul style="font-size: 22px; list-style: square; padding-left: 20px;">
-            <li><strong>Brandon Figueroa</strong> – Front-End Design, Layout & Navigation</li>
-            <li><strong>Teammate 2</strong> – Node.js, Express, Server Routing</li>
-            <li><strong>Teammate 3</strong> – MongoDB Integration & Modals</li>
-            <li><strong>Teammate 4</strong> – Forms, Input Validation, and Cart Logic</li>
+      <div class="content-card">
+        <h2 class="card-title">Meet the Team</h2>
+        <ul class="bullet">
+          <li><strong>Brandon Figueroa</strong> — Front-End Design, Layout & Navigation</li>
+          <li><strong>Teammate 2</strong> — Node.js, Express, Server Routing</li>
+          <li><strong>Teammate 3</strong> — MongoDB Integration & Modals</li>
+          <li><strong>Teammate 4</strong> — Forms, Input Validation, and Cart Logic</li>
         </ul>
+        <p class="muted tiny">
+          (Update teammate names/roles as needed.)
+        </p>
+      </div>
     </section>
+  </main>
 
-    <footer>
-        <p style="text-align: center;">&copy; 2025 The Lit Lounge. All rights reserved.</p>
-    </footer>
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 The Lit Lounge. All rights reserved.</p>
+    </div>
+  </footer>
+
 </body>
 </html>
-
