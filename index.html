@@ -1,86 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>The Lit Lounge</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Lit Lounge</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <header>
-        <nav>
-            <h1 style="font-size: 100px;">The Lit Lounge</h1>
-            <ul>
-                <li style="font-size: 34px;"><a href="index.html">Home</a></li>
-                <li style="font-size: 34px;"><a href="browse.html">Browse</a></li>
-                <li style="font-size: 34px;"><a href="about.html">About</a></li>
-                <li style="font-size: 34px;"><a href="cart.html">Cart</a></li>
-				<li style="font-size: 34px;"><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="centered-image">
-        <img src="images/hero-banner.png" alt="Books Banner">
-        <h2 style="font-size: 62px;">Where stories find their reader</h2>
-    </section>
+  <header class="site-header">
+    <nav class="nav container">
+      <a class="brand" href="index.html">The Lit Lounge</a>
+      <div class="nav-links">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="browse.html">Browse</a>
+        <a href="about.html">About</a>
+        <a href="cart.html">Cart</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-    <!-- Featured Books -->
-    <section class="featured-books">
-        <h3 style="font-size: 48px;">Featured Books</h3>
-        <div class="book-row">
-            <div class="book">
-                <img src="images/book1.png" width = "40%" height = "auto" alt="book 1 cover">
-                <p style="font-size: 32px;">Whispers of the Emberlight</p>
-                Z<!--<button style="font-size: 24px;">More</button>-->
-				<button style="font-size: 24px;" onclick="addToCart('Whispers of the Emberlight', 14.99)">Add to Cart</button>
-            </div>
-			<br>
-            <div class="book">
-                <img src="images/book2.png" width = "40%" height = "auto" alt="Book 2 Cover">
-                <p style="font-size: 32px;">Beneath a Hollow Sky</p>
-                <!--<button style="font-size: 24px;">More</button>-->
-				<button style="font-size: 24px;" onclick="addToCart('Beneath a Hollow Sky', 14.99)">Add to Cart</button>
-            </div>
-			<br>
-            <div class="book">
-                <img src="images/book3.png" width = "40%" height = "auto" alt="Book 3 Cover">
-                <p style="font-size: 32px;">The Clockmaker's Silence</p>
-                <!--<button style="font-size: 24px;">More</button>-->
-				<button style="font-size: 24px;" onclick="addToCart(&quot;The Clockmaker's Silence&quot;, 14.99)">Add to Cart</button>
-            </div>
-			<br>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>Where stories find their reader</h1>
+          <p>
+            Browse featured fiction picks, view details, and build a cart that stays saved while you explore.
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="browse.html">Browse All Books</a>
+            <a class="btn ghost" href="cart.html">View Cart</a>
+          </div>
         </div>
+
+        <div class="hero-media">
+          <img src="images/hero-banner.png" alt="Stack of books illustration" />
+        </div>
+      </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="cta">
-        <a style="font-size: 34px;" href="browse.html" class="browse-btn">Browse All Books</a>
+    <!-- FEATURED -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Featured Books</h2>
+          <p>Quick picks to get you started.</p>
+        </div>
+
+        <div class="book-grid">
+          <article class="book-card">
+            <img src="images/book1.png" alt="Whispers of the Emberlight cover" />
+            <h3>Whispers of the Emberlight</h3>
+            <p class="muted">Mira Thorne</p>
+            <div class="book-bottom">
+              <span class="price">$14.99</span>
+              <button class="btn small" onclick="addToCart('Whispers of the Emberlight', 14.99)">Add</button>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <img src="images/book2.png" alt="Beneath a Hollow Sky cover" />
+            <h3>Beneath a Hollow Sky</h3>
+            <p class="muted">Elias Varrin</p>
+            <div class="book-bottom">
+              <span class="price">$12.49</span>
+              <button class="btn small" onclick="addToCart('Beneath a Hollow Sky', 12.49)">Add</button>
+            </div>
+          </article>
+
+          <article class="book-card">
+            <img src="images/book3.png" alt="The Clockmaker's Silence cover" />
+            <h3>The Clockmaker&apos;s Silence</h3>
+            <p class="muted">Renata Vale</p>
+            <div class="book-bottom">
+              <span class="price">$16.25</span>
+              <button class="btn small" onclick="addToCart(`The Clockmaker's Silence`, 16.25)">Add</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn primary" href="browse.html">Browse All Books</a>
+        </div>
+      </div>
     </section>
+  </main>
 
-    <footer>
-        <p>&copy; 2025 The Lit Lounge. All rights reserved.</p>
-    </footer>
-	
-<script>
-  function addToCart(title, price) {
-    const item = { title, price, qty: 1 };
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 The Lit Lounge. All rights reserved.</p>
+    </div>
+  </footer>
 
-    // Check if item already exists
-    const existing = cart.find(book => book.title === title);
-    if (existing) {
-      existing.qty += 1;
-    } else {
-      cart.push(item);
+  <script>
+    function addToCart(title, price) {
+      const item = { title, price, qty: 1 };
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+      const existing = cart.find(book => book.title === title);
+      if (existing) existing.qty += 1;
+      else cart.push(item);
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${title} added to cart.`);
     }
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-    alert(`${title} added to cart.`);
-  }
-</script>
-
+  </script>
 </body>
 </html>
-
